@@ -1,0 +1,45 @@
+{
+	"schemaVersion": 1,
+	"id": "skulk_burner",
+	"version": "${version}",
+	"name": "Skulk Burner",
+	"description": "Convert fuel to experience",
+	"authors": [
+		"wdfeer"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "GPL-3.0",
+	"icon": "assets/skulk_burner/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			{
+				"value": "org.wdfeer.skulk_burner.SkulkBurner",
+				"adapter": "kotlin"
+			}
+		],
+		"client": [
+			{
+				"value": "org.wdfeer.skulk_burner.SkulkBurnerClient",
+				"adapter": "kotlin"
+			}
+		]
+	},
+	"mixins": [
+		"skulk_burner.mixins.json",
+		{
+			"config": "skulk_burner.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*",
+		"fabric-language-kotlin": "*"
+	}
+}
