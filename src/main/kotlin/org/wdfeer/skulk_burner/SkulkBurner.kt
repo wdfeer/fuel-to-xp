@@ -12,6 +12,7 @@ import org.wdfeer.skulk_burner.item.SkulkBurnerBlockItem
 
 object SkulkBurner : ModInitializer {
 	private const val MOD_ID = "skulk_burner"
+	const val BLOCK_ID = "skulk_burner"
 
 	private fun getId(path: String): Identifier = Identifier(MOD_ID, path)
 
@@ -21,8 +22,8 @@ object SkulkBurner : ModInitializer {
 	private val item = SkulkBurnerBlockItem()
 
 	override fun onInitialize() {
-		Registry.register(Registries.BLOCK, getId("skulk_burner"), block)
-		Registry.register(Registries.ITEM, getId("skulk_burner"), item)
+		Registry.register(Registries.BLOCK, getId(BLOCK_ID), block)
+		Registry.register(Registries.ITEM, getId(BLOCK_ID), item)
 
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register { it.add(item) }
 
