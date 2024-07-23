@@ -1,6 +1,8 @@
 package org.wdfeer.skulk_burner
 
 import net.fabricmc.api.ModInitializer
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
+import net.minecraft.item.ItemGroups
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
@@ -16,11 +18,13 @@ object SkulkBurner : ModInitializer {
 	private val logger = LoggerFactory.getLogger(MOD_ID)
 
 	val block = SkulkBurnerBlock()
-	val item = SkulkBurnerBlockItem()
+	private val item = SkulkBurnerBlockItem()
 
 	override fun onInitialize() {
 		Registry.register(Registries.BLOCK, getId("skulk_burner"), block)
 		Registry.register(Registries.ITEM, getId("skulk_burner"), item)
+
+		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register { it.add(item) }
 
 		logger.info("Skulk Burner initialized!")
 	}
