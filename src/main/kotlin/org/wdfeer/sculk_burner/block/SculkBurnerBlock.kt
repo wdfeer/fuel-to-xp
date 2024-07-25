@@ -1,6 +1,8 @@
 package org.wdfeer.sculk_burner.block
 
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
+import net.fabricmc.fabric.api.registry.FuelRegistry
+import net.fabricmc.fabric.impl.content.registry.FuelRegistryImpl
 import net.minecraft.block.Block
 import net.minecraft.block.BlockEntityProvider
 import net.minecraft.block.BlockState
@@ -8,6 +10,9 @@ import net.minecraft.block.MapColor
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
+import net.minecraft.entity.ExperienceOrbEntity
+import net.minecraft.entity.ItemEntity
+import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import org.wdfeer.sculk_burner.block.entity.SculkBurnerBlockEntity
@@ -25,7 +30,19 @@ class SculkBurnerBlock : Block(
         type: BlockEntityType<T>?
     ): BlockEntityTicker<T> = Ticker(::tick)
 
-    private fun <T : BlockEntity?> tick(world: World?, blockPos: BlockPos?, blockState: BlockState?, blockEntity: T) {
-        TODO("Implement ticking behavior")
+    private fun tick(world: World?, blockPos: BlockPos?, blockState: BlockState?, blockEntity: BlockEntity?) {
+        if (world !is ServerWorld || blockPos == null) return
+
+        for (entity in world.iterateEntities()) {
+            if (entity == null || !entity.isAlive || entity !is ItemEntity) continue
+
+            val fuel: Int = FuelRegistry.INSTANCE[entity.stack.item] ?: continue
+            if (fuel == 0) continue
+
+            if (entity.pos.distanceTo(blockPos.toCenterPos()) < 1.5) {
+                entity.stack.decrement(1)
+                ExperienceOrbEntity.spawn(world, blockPos.toCenterPos(), fuel / 20)
+            }
+        }
     }
 }
