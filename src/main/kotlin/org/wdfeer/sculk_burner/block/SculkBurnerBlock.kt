@@ -2,17 +2,14 @@ package org.wdfeer.sculk_burner.block
 
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.fabricmc.fabric.api.registry.FuelRegistry
-import net.fabricmc.fabric.impl.content.registry.FuelRegistryImpl
-import net.minecraft.block.Block
-import net.minecraft.block.BlockEntityProvider
-import net.minecraft.block.BlockState
-import net.minecraft.block.MapColor
+import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.ExperienceOrbEntity
 import net.minecraft.entity.ItemEntity
 import net.minecraft.server.world.ServerWorld
+import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import org.wdfeer.sculk_burner.block.entity.SculkBurnerBlockEntity
@@ -20,8 +17,9 @@ import org.wdfeer.sculk_burner.util.Ticker
 
 class SculkBurnerBlock : Block(
     FabricBlockSettings.create()
-        .mapColor(MapColor.PALE_PURPLE)
-        .strength(3.5f)), BlockEntityProvider {
+        .mapColor(Blocks.SCULK_CATALYST.defaultMapColor)
+        .strength(3.5f)
+        .sounds(BlockSoundGroup.SCULK_CATALYST)), BlockEntityProvider {
     override fun createBlockEntity(pos: BlockPos?, state: BlockState?): BlockEntity = SculkBurnerBlockEntity(pos, state)
 
     override fun <T : BlockEntity?> getTicker(
