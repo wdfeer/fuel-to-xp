@@ -18,9 +18,10 @@ import org.wdfeer.sculk_burner.util.Ticker
 class SculkBurnerBlock : Block(
     FabricBlockSettings.create()
         .mapColor(Blocks.SCULK_CATALYST.defaultMapColor)
-        .hardness(Blocks.SCULK_CATALYST.hardness)
-        .resistance(Blocks.SCULK_CATALYST.blastResistance)
-        .sounds(BlockSoundGroup.SCULK_CATALYST)), BlockEntityProvider {
+        .hardness(Blocks.FURNACE.hardness)
+        .resistance(Blocks.FURNACE.blastResistance)
+        .requiresTool()
+        .sounds(BlockSoundGroup.STONE)), BlockEntityProvider {
     override fun createBlockEntity(pos: BlockPos?, state: BlockState?): BlockEntity = SculkBurnerBlockEntity(pos, state)
 
     override fun <T : BlockEntity?> getTicker(
