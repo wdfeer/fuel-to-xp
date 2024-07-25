@@ -1,8 +1,12 @@
 package org.wdfeer.sculk_burner.block
 
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.fabricmc.fabric.api.registry.FuelRegistry
-import net.minecraft.block.*
+import net.minecraft.block.Block
+import net.minecraft.block.BlockEntityProvider
+import net.minecraft.block.BlockState
+import net.minecraft.block.Blocks
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
@@ -40,9 +44,40 @@ class SculkBurnerBlock : Block(
             if (fuel == 0) continue
 
             if (entity.pos.distanceTo(blockPos.toCenterPos()) < 1.5) {
-                entity.stack.decrement(1)
-                ExperienceOrbEntity.spawn(world, blockPos.toCenterPos(), fuel / 20)
+                if (spawnXpDelayed(world, blockPos, fuel / 20))
+                    entity.stack.decrement(1)
             }
+        }
+    }
+
+    private fun spawnXpDelayed(world: ServerWorld, blockPos: BlockPos, xp: Int): Boolean {
+        val delay = 20
+
+        fun createDelayedAction(world: ServerWorld, act: () -> Unit): Boolean {
+            if (delayedActions.any { it.key.third == blockPos }) return false
+
+            val key = Triple(world, world.time + delay, blockPos)
+            delayedActions[key] = act
+
+            return true
+        }
+
+        return createDelayedAction(world) {
+            ExperienceOrbEntity.spawn(world, blockPos.toCenterPos(), xp)
+        }
+    }
+
+    private var delayedActions: MutableMap<Triple<ServerWorld, Long, BlockPos>, () -> Unit> = mutableMapOf()
+
+    init {
+        ServerTickEvents.END_WORLD_TICK.register { world ->
+            val newDelayedActions: MutableMap<Triple<ServerWorld, Long, BlockPos>, () -> Unit> = mutableMapOf()
+            delayedActions.forEach {
+                if (it.key.first == world && it.key.second <= world.time){
+                    it.value()
+                } else newDelayedActions[it.key] = it.value
+            }
+            delayedActions = newDelayedActions
         }
     }
 }
