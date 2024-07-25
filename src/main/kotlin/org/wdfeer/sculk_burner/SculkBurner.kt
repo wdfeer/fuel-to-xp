@@ -8,6 +8,7 @@ import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
 import org.slf4j.LoggerFactory
 import org.wdfeer.sculk_burner.block.SculkBurnerBlock
+import org.wdfeer.sculk_burner.block.entity.SculkBurnerBlockEntity
 import org.wdfeer.sculk_burner.item.SculkBurnerBlockItem
 
 object SculkBurner : ModInitializer {
@@ -24,6 +25,7 @@ object SculkBurner : ModInitializer {
 	override fun onInitialize() {
 		Registry.register(Registries.BLOCK, getId(BLOCK_ID), block)
 		Registry.register(Registries.ITEM, getId(BLOCK_ID), item)
+		Registry.register(Registries.BLOCK_ENTITY_TYPE, getId(BLOCK_ID + "_entity"), SculkBurnerBlockEntity.blockEntityType)
 
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register { it.add(item) }
 
