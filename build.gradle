@@ -23,7 +23,7 @@ loom {
 	splitEnvironmentSourceSets()
 
 	mods {
-		"skulk_burner" {
+		"sculk_burner" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}

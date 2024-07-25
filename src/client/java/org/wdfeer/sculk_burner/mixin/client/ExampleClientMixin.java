@@ -1,4 +1,4 @@
-package org.wdfeer.skulk_burner.mixin.client;
+package org.wdfeer.sculk_burner.mixin.client;
 
 import net.minecraft.client.MinecraftClient;
 import org.spongepowered.asm.mixin.Mixin;

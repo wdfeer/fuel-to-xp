@@ -1,8 +1,8 @@
 {
 	"schemaVersion": 1,
-	"id": "skulk_burner",
+	"id": "sculk_burner",
 	"version": "${version}",
-	"name": "Skulk Burner",
+	"name": "Sculk Burner",
 	"description": "Convert fuel to experience",
 	"authors": [
 		"wdfeer"
@@ -12,26 +12,26 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "GPL-3.0",
-	"icon": "assets/skulk_burner/icon.png",
+	"icon": "assets/sculk_burner/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
 			{
-				"value": "org.wdfeer.skulk_burner.SkulkBurner",
+				"value": "org.wdfeer.sculk_burner.SculkBurner",
 				"adapter": "kotlin"
 			}
 		],
 		"client": [
 			{
-				"value": "org.wdfeer.skulk_burner.SkulkBurnerClient",
+				"value": "org.wdfeer.sculk_burner.SculkBurnerClient",
 				"adapter": "kotlin"
 			}
 		]
 	},
 	"mixins": [
-		"skulk_burner.mixins.json",
+		"sculk_burner.mixins.json",
 		{
-			"config": "skulk_burner.client.mixins.json",
+			"config": "sculk_burner.client.mixins.json",
 			"environment": "client"
 		}
 	],

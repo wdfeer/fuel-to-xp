@@ -1,4 +1,4 @@
-package org.wdfeer.skulk_burner.block
+package org.wdfeer.sculk_burner.block
 
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.minecraft.block.Block
@@ -10,14 +10,14 @@ import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
-import org.wdfeer.skulk_burner.block.entity.SkulkBurnerBlockEntity
-import org.wdfeer.skulk_burner.util.Ticker
+import org.wdfeer.sculk_burner.block.entity.SculkBurnerBlockEntity
+import org.wdfeer.sculk_burner.util.Ticker
 
-class SkulkBurnerBlock : Block(
+class SculkBurnerBlock : Block(
     FabricBlockSettings.create()
         .mapColor(MapColor.PALE_PURPLE)
         .strength(3.5f)), BlockEntityProvider {
-    override fun createBlockEntity(pos: BlockPos?, state: BlockState?): BlockEntity = SkulkBurnerBlockEntity(pos, state)
+    override fun createBlockEntity(pos: BlockPos?, state: BlockState?): BlockEntity = SculkBurnerBlockEntity(pos, state)
 
     override fun <T : BlockEntity?> getTicker(
         world: World?,

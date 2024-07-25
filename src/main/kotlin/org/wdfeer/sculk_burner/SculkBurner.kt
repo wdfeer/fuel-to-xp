@@ -1,4 +1,4 @@
-package org.wdfeer.skulk_burner
+package org.wdfeer.sculk_burner
 
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
@@ -7,19 +7,19 @@ import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
 import org.slf4j.LoggerFactory
-import org.wdfeer.skulk_burner.block.SkulkBurnerBlock
-import org.wdfeer.skulk_burner.item.SkulkBurnerBlockItem
+import org.wdfeer.sculk_burner.block.SculkBurnerBlock
+import org.wdfeer.sculk_burner.item.SculkBurnerBlockItem
 
-object SkulkBurner : ModInitializer {
-	private const val MOD_ID = "skulk_burner"
-	const val BLOCK_ID = "skulk_burner"
+object SculkBurner : ModInitializer {
+	private const val MOD_ID = "sculk_burner"
+	const val BLOCK_ID = "sculk_burner"
 
 	private fun getId(path: String): Identifier = Identifier(MOD_ID, path)
 
 	private val logger = LoggerFactory.getLogger(MOD_ID)
 
-	val block = SkulkBurnerBlock()
-	private val item = SkulkBurnerBlockItem()
+	val block = SculkBurnerBlock()
+	private val item = SculkBurnerBlockItem()
 
 	override fun onInitialize() {
 		Registry.register(Registries.BLOCK, getId(BLOCK_ID), block)
@@ -27,6 +27,6 @@ object SkulkBurner : ModInitializer {
 
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register { it.add(item) }
 
-		logger.info("Skulk Burner initialized!")
+		logger.info("Sculk Burner initialized!")
 	}
 }
