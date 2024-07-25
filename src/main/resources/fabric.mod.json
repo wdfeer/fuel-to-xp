@@ -29,11 +29,7 @@
 		]
 	},
 	"mixins": [
-		"sculk_burner.mixins.json",
-		{
-			"config": "sculk_burner.client.mixins.json",
-			"environment": "client"
-		}
+		"sculk_burner.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.15.11",
