@@ -44,7 +44,7 @@ class SculkBurnerBlock : Block(
             if (fuel == 0) continue
 
             if (entity.pos.distanceTo(blockPos.toCenterPos()) < 1.5) {
-                if (spawnXpDelayed(world, blockPos, fuel / 20))
+                if (spawnXpDelayed(world, blockPos, fuel / 100 + 1))
                     entity.stack.decrement(1)
             }
         }
