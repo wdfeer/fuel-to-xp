@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "top": "fuel_to_xp:block/sculk_burner/top",
+    "side": "fuel_to_xp:block/sculk_burner/side",
+    "bottom": "fuel_to_xp:block/sculk_burner/bottom"
+  }
+}

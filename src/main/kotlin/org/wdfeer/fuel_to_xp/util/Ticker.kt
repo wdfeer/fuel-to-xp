@@ -1,4 +1,4 @@
-package org.wdfeer.sculk_burner.util
+package org.wdfeer.fuel_to_xp.util
 
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity

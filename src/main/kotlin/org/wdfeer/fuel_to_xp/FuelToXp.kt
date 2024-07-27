@@ -1,4 +1,4 @@
-package org.wdfeer.sculk_burner
+package org.wdfeer.fuel_to_xp
 
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
@@ -7,12 +7,12 @@ import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
 import org.slf4j.LoggerFactory
-import org.wdfeer.sculk_burner.block.SculkBurnerBlock
-import org.wdfeer.sculk_burner.block.entity.SculkBurnerBlockEntity
-import org.wdfeer.sculk_burner.item.SculkBurnerBlockItem
+import org.wdfeer.fuel_to_xp.block.SculkBurnerBlock
+import org.wdfeer.fuel_to_xp.block.entity.SculkBurnerBlockEntity
+import org.wdfeer.fuel_to_xp.item.SculkBurnerBlockItem
 
-object SculkBurner : ModInitializer {
-	private const val MOD_ID = "sculk_burner"
+object FuelToXp : ModInitializer {
+	private const val MOD_ID = "fuel_to_xp"
 	const val BLOCK_ID = "sculk_burner"
 
 	private fun getId(path: String): Identifier = Identifier(MOD_ID, path)
@@ -29,6 +29,6 @@ object SculkBurner : ModInitializer {
 
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register { it.add(item) }
 
-		logger.info("Sculk Burner initialized!")
+		logger.info("Fuel to Xp initialized!")
 	}
 }

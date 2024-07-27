@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_bottom_top",
-  "textures": {
-    "top": "sculk_burner:block/sculk_burner/top",
-    "side": "sculk_burner:block/sculk_burner/side",
-    "bottom": "sculk_burner:block/sculk_burner/bottom"
-  }
-}

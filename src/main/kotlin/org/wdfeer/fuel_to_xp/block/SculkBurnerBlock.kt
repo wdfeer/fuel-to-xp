@@ -1,4 +1,4 @@
-package org.wdfeer.sculk_burner.block
+package org.wdfeer.fuel_to_xp.block
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
@@ -16,8 +16,8 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
-import org.wdfeer.sculk_burner.block.entity.SculkBurnerBlockEntity
-import org.wdfeer.sculk_burner.util.Ticker
+import org.wdfeer.fuel_to_xp.block.entity.SculkBurnerBlockEntity
+import org.wdfeer.fuel_to_xp.util.Ticker
 
 class SculkBurnerBlock : Block(
     FabricBlockSettings.create()

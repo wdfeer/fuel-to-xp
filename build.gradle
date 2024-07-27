@@ -23,7 +23,7 @@ loom {
 	splitEnvironmentSourceSets()
 
 	mods {
-		"sculk_burner" {
+		"fuel_to_xp" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}

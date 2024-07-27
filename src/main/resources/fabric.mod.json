@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "sculk_burner",
+	"id": "fuel_to_xp",
 	"version": "${version}",
 	"name": "Sculk Burner",
 	"description": "Convert fuel to experience",
@@ -12,18 +12,18 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "GPL-3.0",
-	"icon": "assets/sculk_burner/icon.png",
+	"icon": "assets/fuel_to_xp/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
 			{
-				"value": "org.wdfeer.sculk_burner.SculkBurner",
+				"value": "org.wdfeer.fuel_to_xp.FuelToXp",
 				"adapter": "kotlin"
 			}
 		],
 		"client": [
 			{
-				"value": "org.wdfeer.sculk_burner.SculkBurnerClient",
+				"value": "org.wdfeer.fuel_to_xp.FuelToXpClient",
 				"adapter": "kotlin"
 			}
 		]
