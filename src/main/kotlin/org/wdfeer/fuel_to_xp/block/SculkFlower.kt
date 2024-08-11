@@ -32,9 +32,9 @@ class SculkFlower : Block(
         world: World?,
         state: BlockState?,
         type: BlockEntityType<T>?
-    ): BlockEntityTicker<T> = Ticker(::tick)
+    ): BlockEntityTicker<T> = Ticker { w, pos, _, _ -> tick(w, pos) }
 
-    private fun tick(world: World?, blockPos: BlockPos?, blockState: BlockState?, blockEntity: BlockEntity?) {
+    private fun tick(world: World?, blockPos: BlockPos?) {
         if (world !is ServerWorld || blockPos == null) return
 
         for (entity in world.iterateEntities()) {
