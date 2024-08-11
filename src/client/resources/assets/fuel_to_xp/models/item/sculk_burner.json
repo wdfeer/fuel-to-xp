@@ -1,3 +1,6 @@
 {
-  "parent": "fuel_to_xp:block/sculk_burner"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "fuel_to_xp:block/sculk_burner"
+  }
 }
