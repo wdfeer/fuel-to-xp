@@ -3,10 +3,7 @@ package org.wdfeer.fuel_to_xp.block
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.fabricmc.fabric.api.registry.FuelRegistry
-import net.minecraft.block.Block
-import net.minecraft.block.BlockEntityProvider
-import net.minecraft.block.BlockState
-import net.minecraft.block.Blocks
+import net.minecraft.block.*
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
@@ -21,11 +18,10 @@ import org.wdfeer.fuel_to_xp.util.Ticker
 
 class SculkFlower : Block(
     FabricBlockSettings.create()
-        .mapColor(Blocks.SCULK_CATALYST.defaultMapColor)
-        .hardness(Blocks.FURNACE.hardness)
-        .resistance(Blocks.FURNACE.blastResistance)
-        .requiresTool()
-        .sounds(BlockSoundGroup.STONE)), BlockEntityProvider {
+        .mapColor(MapColor.DARK_GREEN)
+        .hardness(Blocks.TORCHFLOWER.hardness)
+        .resistance(Blocks.TORCHFLOWER.blastResistance)
+        .sounds(BlockSoundGroup.GRASS)), BlockEntityProvider {
     override fun createBlockEntity(pos: BlockPos?, state: BlockState?): BlockEntity = SculkFlowerBlockEntity(pos, state)
 
     override fun <T : BlockEntity?> getTicker(
