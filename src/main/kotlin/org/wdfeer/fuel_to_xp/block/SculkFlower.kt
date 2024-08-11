@@ -14,7 +14,7 @@ import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import org.wdfeer.fuel_to_xp.block.entity.SculkFlowerBlockEntity
-import org.wdfeer.fuel_to_xp.util.Ticker
+import org.wdfeer.fuel_to_xp.util.*
 
 class SculkFlower : Block(
     FabricBlockSettings.create()
@@ -40,13 +40,15 @@ class SculkFlower : Block(
             if (fuel == 0) continue
 
             if (entity.pos.distanceTo(blockPos.toCenterPos()) < 1.5) {
-                if (spawnXpDelayed(world, blockPos, fuel / 100 + 1))
+                if (spawnXpDelayed(world, blockPos, (fuel / 200f).randomRound()))
                     entity.stack.decrement(1)
             }
         }
     }
 
     private fun spawnXpDelayed(world: ServerWorld, blockPos: BlockPos, xp: Int): Boolean {
+        if (xp <= 0) return false
+
         val delay = 20
 
         fun createDelayedAction(world: ServerWorld, act: () -> Unit): Boolean {
