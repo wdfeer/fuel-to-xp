@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "fuel_to_xp:block/sculk_burner"
+    "cross": "fuel_to_xp:block/sculkflower"
   }
 }

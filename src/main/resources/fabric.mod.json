@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "fuel_to_xp",
 	"version": "${version}",
-	"name": "Sculk Burner",
+	"name": "Fuel to Xp",
 	"description": "Convert fuel to experience",
 	"authors": [
 		"wdfeer"

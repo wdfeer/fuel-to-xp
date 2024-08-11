@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "fuel_to_xp:sculk_burner"
+          "name": "fuel_to_xp:sculkflower"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "fuel_to_xp:blocks/sculk_burner"
+  "random_sequence": "fuel_to_xp:blocks/sculkflower"
 }

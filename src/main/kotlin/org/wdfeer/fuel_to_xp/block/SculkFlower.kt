@@ -16,17 +16,17 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
-import org.wdfeer.fuel_to_xp.block.entity.SculkBurnerBlockEntity
+import org.wdfeer.fuel_to_xp.block.entity.SculkFlowerBlockEntity
 import org.wdfeer.fuel_to_xp.util.Ticker
 
-class SculkBurnerBlock : Block(
+class SculkFlower : Block(
     FabricBlockSettings.create()
         .mapColor(Blocks.SCULK_CATALYST.defaultMapColor)
         .hardness(Blocks.FURNACE.hardness)
         .resistance(Blocks.FURNACE.blastResistance)
         .requiresTool()
         .sounds(BlockSoundGroup.STONE)), BlockEntityProvider {
-    override fun createBlockEntity(pos: BlockPos?, state: BlockState?): BlockEntity = SculkBurnerBlockEntity(pos, state)
+    override fun createBlockEntity(pos: BlockPos?, state: BlockState?): BlockEntity = SculkFlowerBlockEntity(pos, state)
 
     override fun <T : BlockEntity?> getTicker(
         world: World?,

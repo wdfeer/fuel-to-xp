@@ -8,14 +8,14 @@ import net.minecraft.util.Util
 import net.minecraft.util.math.BlockPos
 import org.wdfeer.fuel_to_xp.FuelToXp
 
-class SculkBurnerBlockEntity(
+class SculkFlowerBlockEntity(
     pos: BlockPos?,
     state: BlockState?
 ) : BlockEntity(blockEntityType, pos, state) {
     companion object {
-        val blockEntityType: BlockEntityType<SculkBurnerBlockEntity> =
+        val blockEntityType: BlockEntityType<SculkFlowerBlockEntity> =
             BlockEntityType.Builder
-                .create({ pos, state -> SculkBurnerBlockEntity(pos, state)}, FuelToXp.block)
+                .create({ pos, state -> SculkFlowerBlockEntity(pos, state)}, FuelToXp.block)
                 .build(Util.getChoiceType(TypeReferences.BLOCK_ENTITY, FuelToXp.BLOCK_ID))
     }
 }
