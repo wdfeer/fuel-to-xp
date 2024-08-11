@@ -9,19 +9,18 @@ import net.minecraft.block.entity.BlockEntityTicker
 import net.minecraft.block.entity.BlockEntityType
 import net.minecraft.entity.ExperienceOrbEntity
 import net.minecraft.entity.ItemEntity
+import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.server.world.ServerWorld
-import net.minecraft.sound.BlockSoundGroup
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import org.wdfeer.fuel_to_xp.block.entity.SculkFlowerBlockEntity
 import org.wdfeer.fuel_to_xp.util.*
 
-class SculkFlower : Block(
-    FabricBlockSettings.create()
-        .mapColor(MapColor.DARK_GREEN)
-        .hardness(Blocks.TORCHFLOWER.hardness)
-        .resistance(Blocks.TORCHFLOWER.blastResistance)
-        .sounds(BlockSoundGroup.GRASS)), BlockEntityProvider {
+class SculkFlower : FlowerBlock(
+    StatusEffects.NAUSEA,
+    6,
+    FabricBlockSettings.copy(Blocks.TORCHFLOWER)
+), BlockEntityProvider {
     override fun createBlockEntity(pos: BlockPos?, state: BlockState?): BlockEntity = SculkFlowerBlockEntity(pos, state)
 
     override fun <T : BlockEntity?> getTicker(
@@ -31,6 +30,7 @@ class SculkFlower : Block(
     ): BlockEntityTicker<T> = Ticker { w, pos, _, _ -> tick(w, pos) }
 
     private fun tick(world: World?, blockPos: BlockPos?) {
+        Blocks.TORCHFLOWER
         if (world !is ServerWorld || blockPos == null) return
 
         for (entity in world.iterateEntities()) {
