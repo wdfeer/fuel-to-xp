@@ -1,3 +1,7 @@
 {
-  "block.fuel_to_xp.sculkflower": "Sculk Flower"
+  "block.fuel_to_xp.sculkflower": "Sculk Flower",
+
+  "fuel_to_xp.midnightconfig.title": "Fuel to XP - Configuration",
+  "fuel_to_xp.midnightconfig.fuelPerXp": "Fuel ticks per xp",
+  "fuel_to_xp.midnightconfig.delayTicks": "Delay in ticks"
 }
