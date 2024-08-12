@@ -47,12 +47,12 @@ class SculkFlower : FlowerBlock(
         }
     }
 
-    private fun getXpAmount(fuel: Int): Int = (fuel / FuelToXpConfig.divisor.toFloat()).randomRound()
+    private fun getXpAmount(fuel: Int): Int = (fuel / FuelToXpConfig.fuelPerXp.toFloat()).randomRound()
 
     private fun spawnXpDelayed(world: ServerWorld, blockPos: BlockPos, xp: Int): Boolean {
         if (xp <= 0) return false
 
-        val delay = FuelToXpConfig.delay
+        val delay = FuelToXpConfig.delayTicks
 
         fun createDelayedAction(world: ServerWorld, act: () -> Unit): Boolean {
             if (delayedActions.any { it.key.third == blockPos }) return false
