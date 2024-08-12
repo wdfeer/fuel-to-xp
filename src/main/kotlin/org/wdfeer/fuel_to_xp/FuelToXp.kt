@@ -1,5 +1,6 @@
 package org.wdfeer.fuel_to_xp
 
+import eu.midnightdust.lib.config.MidnightConfig
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.item.ItemGroups
@@ -9,6 +10,7 @@ import net.minecraft.util.Identifier
 import org.slf4j.LoggerFactory
 import org.wdfeer.fuel_to_xp.block.SculkFlower
 import org.wdfeer.fuel_to_xp.block.entity.SculkFlowerBlockEntity
+import org.wdfeer.fuel_to_xp.config.FuelToXpConfig
 import org.wdfeer.fuel_to_xp.item.SculkFlowerBlockItem
 
 object FuelToXp : ModInitializer {
@@ -28,6 +30,8 @@ object FuelToXp : ModInitializer {
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, getId(BLOCK_ID + "_entity"), SculkFlowerBlockEntity.blockEntityType)
 
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register { it.add(item) }
+
+		MidnightConfig.init(MOD_ID, FuelToXpConfig::class.java)
 
 		logger.info("Fuel to Xp initialized!")
 	}

@@ -14,6 +14,7 @@ import net.minecraft.server.world.ServerWorld
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
 import org.wdfeer.fuel_to_xp.block.entity.SculkFlowerBlockEntity
+import org.wdfeer.fuel_to_xp.config.FuelToXpConfig
 import org.wdfeer.fuel_to_xp.util.*
 
 class SculkFlower : FlowerBlock(
@@ -40,16 +41,18 @@ class SculkFlower : FlowerBlock(
             if (fuel == 0) continue
 
             if (entity.pos.distanceTo(blockPos.toCenterPos()) < 1.5) {
-                if (spawnXpDelayed(world, blockPos, (fuel / 200f).randomRound()))
+                if (spawnXpDelayed(world, blockPos, getXpAmount(fuel)))
                     entity.stack.decrement(1)
             }
         }
     }
 
+    private fun getXpAmount(fuel: Int): Int = (fuel / FuelToXpConfig.divisor.toFloat()).randomRound()
+
     private fun spawnXpDelayed(world: ServerWorld, blockPos: BlockPos, xp: Int): Boolean {
         if (xp <= 0) return false
 
-        val delay = 20
+        val delay = FuelToXpConfig.delay
 
         fun createDelayedAction(world: ServerWorld, act: () -> Unit): Boolean {
             if (delayedActions.any { it.key.third == blockPos }) return false
