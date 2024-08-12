@@ -6,6 +6,6 @@ import net.minecraft.client.render.RenderLayer
 
 object FuelToXpClient : ClientModInitializer {
 	override fun onInitializeClient() {
-		BlockRenderLayerMap.INSTANCE.putBlock(FuelToXp.block, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(FuelToXp.block, RenderLayer.getCutout())
 	}
 }

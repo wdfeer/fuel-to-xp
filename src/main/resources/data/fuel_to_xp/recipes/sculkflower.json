@@ -6,7 +6,10 @@
       "item": "minecraft:sculk_catalyst"
     },
     {
-      "item": "minecraft:furnace"
+      "item": "minecraft:blaze_rod"
+    },
+    {
+      "tag": "minecraft:small_flowers"
     }
   ],
   "result": {
