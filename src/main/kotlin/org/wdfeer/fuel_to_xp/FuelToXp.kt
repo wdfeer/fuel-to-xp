@@ -9,6 +9,8 @@ import net.minecraft.util.Identifier
 import org.slf4j.LoggerFactory
 import org.wdfeer.fuel_to_xp.block.SculkFlower
 import org.wdfeer.fuel_to_xp.block.entity.SculkFlowerBlockEntity
+import org.wdfeer.fuel_to_xp.config.Config
+import org.wdfeer.fuel_to_xp.config.loadConfig
 import org.wdfeer.fuel_to_xp.item.SculkFlowerBlockItem
 
 object FuelToXp : ModInitializer {
@@ -17,12 +19,16 @@ object FuelToXp : ModInitializer {
 
 	private fun getId(path: String): Identifier = Identifier(MOD_ID, path)
 
-	private val logger = LoggerFactory.getLogger(MOD_ID)
+	val logger = LoggerFactory.getLogger(MOD_ID)
 
 	val block = SculkFlower()
 	private val item = SculkFlowerBlockItem()
 
+	lateinit var config: Config
+
 	override fun onInitialize() {
+		config = loadConfig()
+
 		Registry.register(Registries.BLOCK, getId(BLOCK_ID), block)
 		Registry.register(Registries.ITEM, getId(BLOCK_ID), item)
 		Registry.register(Registries.BLOCK_ENTITY_TYPE, getId(BLOCK_ID + "_entity"), SculkFlowerBlockEntity.blockEntityType)
