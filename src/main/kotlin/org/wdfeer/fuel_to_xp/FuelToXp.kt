@@ -14,7 +14,7 @@ import org.wdfeer.fuel_to_xp.config.loadConfig
 import org.wdfeer.fuel_to_xp.item.SculkFlowerBlockItem
 
 object FuelToXp : ModInitializer {
-	private const val MOD_ID = "fuel_to_xp"
+	const val MOD_ID = "fuel_to_xp"
 	const val BLOCK_ID = "sculkflower"
 
 	private fun getId(path: String): Identifier = Identifier(MOD_ID, path)
