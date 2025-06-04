@@ -30,7 +30,6 @@ class SculkFlower : FlowerBlock(
     ): BlockEntityTicker<T> = Ticker { w, pos, _, _ -> tick(w, pos) }
 
     private fun tick(world: World?, blockPos: BlockPos?) {
-        Blocks.TORCHFLOWER
         if (world !is ServerWorld || blockPos == null) return
 
         for (entity in world.iterateEntities()) {
